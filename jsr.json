@@ -1,0 +1,12 @@
+{
+	"name": "@smujdev/react-canvas",
+	"version": "0.1.0",
+	"exports": "./src/index.ts",
+	"publish": {
+		"include": [
+			"readme.md",
+			"package.json",
+			"src/**/*.ts"
+		]
+	}
+}
