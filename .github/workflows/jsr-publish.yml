@@ -1,0 +1,21 @@
+name: jsr-publish
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install packages
+        run: npm ci
+      - name: Publish package
+        run: npx jsr publish
