@@ -1,0 +1,39 @@
+{
+  "name": "react-canvas",
+  "version": "0.1.0",
+  "description": "Canvas component with helpers",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smujmaiku/react-canvas.git"
+  },
+  "author": "Michael Szmadzinski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smujmaiku/react-canvas/issues"
+  },
+  "homepage": "https://github.com/smujmaiku/react-canvas#readme",
+  "peerDependencies": {
+    "@types/react": "^16.8.6 || ^17.0.0 || ^18.0.0",
+    "react": "^16.8.6 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.6 || ^17.0.0 || ^18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "react": "^18.3.1"
+  },
+  "dependencies": {
+    "@smujdev/react-timing-hooks": "npm:@jsr/smujdev__react-timing-hooks@^0.2.0"
+  }
+}
