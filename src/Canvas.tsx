@@ -11,10 +11,12 @@ export interface CanvasPropsI extends React.ComponentProps<'canvas'> {
 	onFrame?: OnFrame;
 }
 
+type CanvasComponentT = React.ForwardRefExoticComponent<Omit<CanvasPropsI, "ref"> & React.RefAttributes<HTMLCanvasElement>>;
+
 /**
  * Cavnas component with automatic sizing
  */
-export const Canvas = React.forwardRef<HTMLCanvasElement, CanvasPropsI>((props, canvasRef) => {
+export const Canvas: CanvasComponentT = React.forwardRef<HTMLCanvasElement, CanvasPropsI>((props, canvasRef): JSX.Element => {
 	const { width, height, onFrame, ...canvasProps } = props;
 
 	const ref = useRef<HTMLCanvasElement>(null!);
