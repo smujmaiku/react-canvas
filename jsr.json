@@ -6,7 +6,8 @@
 		"include": [
 			"readme.md",
 			"package.json",
-			"src/**/*.ts"
+			"src/**/*.ts",
+			"src/**/*.tsx"
 		]
 	}
 }
