@@ -1,29 +1,23 @@
 import React, { useImperativeHandle, useRef } from 'react';
 import { useAnimationFrame, UseTimedCallbackEventI } from '@smujdev/react-timing-hooks'
 
-// https://stackoverflow.com/a/58473012
-declare module "react" {
-	function forwardRef<T, P = {}>(
-		render: (props: P, ref: React.Ref<T>) => React.ReactNode | null
-	): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
-}
-
-export interface OnFrameEventI<T> extends UseTimedCallbackEventI<T> {
+export interface OnCanvasFrameEventI<T> extends UseTimedCallbackEventI<T> {
 	canvas: HTMLCanvasElement;
 }
 
-export type OnFrame<T> = (event: OnFrameEventI<T>) => void;
+export type OnCanvasFrame<T> = (event: OnCanvasFrameEventI<T>) => void;
 
 export interface CanvasPropsI<T> extends React.ComponentProps<'canvas'> {
+	canvasRef?: React.MutableRefObject<HTMLCanvasElement>;
 	userData?: T;
-	onFrame?: OnFrame<T>;
+	onFrame?: OnCanvasFrame<T>;
 }
 
 /**
  * Cavnas component with automatic sizing
  */
-export function Canvas<T = unknown>(props: CanvasPropsI<T>, canvasRef: React.ForwardedRef<HTMLCanvasElement>): JSX.Element {
-	const { width, height, userData, onFrame, ...canvasProps } = props;
+export function Canvas<T = unknown>(props: CanvasPropsI<T>): JSX.Element {
+	const { width, height, canvasRef, userData, onFrame, ...canvasProps } = props;
 
 	const ref = useRef<HTMLCanvasElement>(null!);
 	useImperativeHandle(canvasRef, () => ref.current);
@@ -42,7 +36,7 @@ export function Canvas<T = unknown>(props: CanvasPropsI<T>, canvasRef: React.For
 		onFrame({ ...event, canvas });
 	}, userData);
 
-	return React.createElement('canvas', { ...canvasProps, ref })
+	return React.createElement('canvas', { ...canvasProps, ref }, null);
 }
 
 export default Canvas;
